@@ -47,7 +47,7 @@ def download_order_book(symbol: str) -> tuple[list[list], int]:
     client = Spot()
 
     try:
-        time = client.time()
+        time = client.time()['serverTime']
         raw_depth = client.depth(symbol, limit=5000)
         depth_list = preprocessing_depth(depth=raw_depth)
     except Exception as ex:
